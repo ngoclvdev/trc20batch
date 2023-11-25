@@ -25,11 +25,17 @@ async function main() {
   }
 }
 
+async function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 const mintCount = 10000;
+const delayTime = 1_000; // 1000ms = 1s
 
 async function batchmint() {
   while (runCount < mintCount) {
     await main();
+    await delay(delayTime);
   }
   console.log("Batch minting completed.");
   process.exit(0); // 停止进程运行
